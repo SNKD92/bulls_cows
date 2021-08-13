@@ -1,15 +1,9 @@
 'use strict';
 
-const gameNumber = 3000;
-console.log(gameNumber)
+const gameNumber = '2000';
 let cows = 0;
 let bulls = 0;
-let usernumber;
-const promt = function () {
-    userNumber = window.prompt(`Enter the 4 digit number: `);
-}
-
-promt();
+let userNumber = window.prompt(`Enter the 4 digit number: `);
 
 const bullCow = function (gameNumberinput, userNumberinput) {
     for (let i = 0; i < gameNumberinput.length; i++) {
@@ -25,16 +19,14 @@ const validityCheck = function (number) {
   } else return false;
 };
 
-let userCorrectNumber = validityCheck(userNumber);
+const userCorrectNumber = validityCheck(userNumber);
 
-while (userCorrectNumber == false) {
-    promt();
-    userCorrectNumber = validityCheck(userNumber);
-    if(userCorrectNumber) {continue} else {
-        promt();
-        userCorrectNumber = validityCheck(userNumber);
-    };
+
+if (userCorrectNumber == false) {
+    userNumber = window.prompt(`Enter the 4 digit number: `);
+} else if(userCorrectNumber) {
+    bullCow(gameNumber, userNumber);
+    window.alert(`You got ${bulls} bull/s and ${cows} cow/s!`);
 }
-
-bullCow(gameNumber, userNumber);
-window.alert(`You got ${bulls} bull/s and ${cows} cow/s!`);
+else {window.alert('Wrong Input!')
+};
